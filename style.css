@@ -5,6 +5,14 @@ body {
     margin: 0;
     padding: 20px;
 }
+.form_component {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
 .form-container {
     background: white;
@@ -13,6 +21,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin: auto;
+    margin: 0 auto;
 }
 
 form {

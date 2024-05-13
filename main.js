@@ -1,4 +1,17 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+    // - attach event listener to the form submission
+    document.getElementById('customerForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Retrieve form inputs
+        const name = document.getElementById('name').value.trim(); 
+        const email = document.getElementById('email').value.trim(); 
+    })
+})
+
+/* document.addEventListener('DOMContentLoaded', function() {
     // Attach an event listener to the form submission
     document.getElementById('customerForm').addEventListener('submit', function(event) {
         // Prevent the default form submission
@@ -47,4 +60,4 @@ document.addEventListener('DOMContentLoaded', function() {
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
-}
+} */

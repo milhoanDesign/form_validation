@@ -1,53 +1,44 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const number1 = document.getElementById('number1');
+    const number2 = document.getElementById('number2');
+    const reset = document.getElementById('resetButton'); 
+    const answerInput = document.getElementById('answer');
+    const checkAnswerButton = document.getElementById('checkAnswer');
+    const result = document.getElementById('result');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // - attach event listener to the form submission
-    document.getElementById('customerForm').addEventListener('submit', function(event) {
-        // Prevent the default form submission
-        event.preventDefault();
+    function generateRandomNumber() {
+        return Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+    }
 
-        // Retrieve form inputs
-        const name = document.getElementById('name').value.trim(); 
-        const email = document.getElementById('email').value.trim(); 
-        const phone = document.getElementById('phone').value.trim(); 
-        const address = document.getElementById('address').value.trim(); 
-        const type = document.getElementById('type').value;
+    function setNewProblem() {
+        const num1 = generateRandomNumber();
+        const num2 = generateRandomNumber();
+        number1.textContent = num1;
+        number2.textContent = num2;
+        answerInput.value = '';
+        result.textContent = '';
+    }
 
-        // Basic Validation
-        let errors = []; 
-        if (!name) {
-            errors.push("Name is required.");
+    function checkAnswer() {
+        const num1 = parseInt(number1.textContent);
+        const num2 = parseInt(number2.textContent);
+        const userAnswer = parseInt(answerInput.value);
+        if (userAnswer === num1 + num2) {
+            result.textContent = 'Correct!';
+            result.style.color = 'green';
+        } else {
+            result.textContent = 'Incorrect, try again.';
+            result.style.color = 'red';
         }
-        if (!email) {
-            errors.push("Email is required.");
-        } else if (!validatedEmail(email)) {
-            errors.push("Email is invalid");
-        }
-        if (errors.length > 0) {
-            alert("Errors:\n" + errors.join("\n"));
-            return;
-        }
+    }
 
-        // If validation passes, append the customer data to the output div
-        const customerDataDiv = document.getElementById('customer-data');
-        const customerInfo = document.createElement('div');
-        customerInfo.classList.add('customer-info');
-        customerInfo.innerHTML = `<strong>Name:</strong> ${name}<br>
-                                  <strong>Email:</strong> ${email}<br>
-                                  <strong>Phone:</strong> ${phone}<br>
-                                  <strong>Address:</strong> ${address}<br>
-                                  <strong>Type:</strong> ${type}`;
-        customerDataDiv.appendChild(customerInfo);
+    function resetGame () {
+        answerInput.value = '';
+        result.textContent = '';
+        setNewProblem(); 
+    }
 
-        // Optionally clear the form or notify the user of success
-        alert("Customer registered successfully!");
-        document.getElementById('customerForm').reset(); 
-    });
-})
-
-// Function to validate email using a regular expression
-function validatedEmail(email){
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email); 
-}
-
-
+    checkAnswerButton.addEventListener('click', checkAnswer);
+    setNewProblem();
+    reset.addEventListener('click', resetGame);
+});

@@ -24,3 +24,13 @@ body {
     font-size: 1.2em;
     margin-top: 20px;
 }
+
+.number-capture {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; 
+    border-radius: 10px;
+}

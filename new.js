@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const number1 = document.getElementById('number1');
     const number2 = document.getElementById('number2');
@@ -7,16 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkAnswerButton = document.getElementById('checkAnswer');
     const result = document.getElementById('result');
 
-    
-    // - New calc features
+    // New calc features
     const number3 = document.getElementById('number3');
     const inputTwo = document.getElementById('inputTwo');
     const calcButton = document.getElementById('newCalc');
     const newResult = document.getElementById('newResult');
 
-    
-    
-    // - Function to generate random numbers
+    // Function to generate random numbers
     function generateRandomNumber() {
         return Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
     }
@@ -28,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         number2.textContent = num2;
         answerInput.value = '';
         result.textContent = '';
+        number3.textContent = ''; // Clear previous value
+        inputTwo.value = ''; // Clear previous value
+        newResult.textContent = ''; // Clear previous value
     }
 
     function checkAnswer() {
@@ -44,32 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function newAnswer(){
-        const num3 = parseInt(number3.textContent);
-        const newNum = parseInt(inputTwo.textContent);
-        const appendResult = num3 + newNum; 
-        result.textContent = `Correct + ${appendResult}`; 
+        const userAnswer = parseInt(answerInput.value);
+        number3.textContent = userAnswer; // Send the answer to number3
+        const newNum = parseInt(inputTwo.value); // Change from textContent to value
+        const appendResult = userAnswer + newNum; 
+        newResult.textContent = `New Result: ${appendResult}`; // Append result to newResult
     }
 
-
-    function resetGame () {
+    function resetGame() {
         answerInput.value = '';
         result.textContent = '';
         setNewProblem(); 
     }
 
     checkAnswerButton.addEventListener('click', checkAnswer);
-    setNewProblem();
     calcButton.addEventListener('click', newAnswer);
     reset.addEventListener('click', resetGame);
+    setNewProblem(); // Initialize the problem when the page loads
 });
-
-
-/*
-Step 1: enter answer
-Step 2: Click Check Answer
-Step 3: send number of 'answer' to span id="number3"
-Step 4: add another number to inputTwo
-Step 5: click Calculate New button
-Step 6: append the new calculation to the end of 'result'
-
-*/ 

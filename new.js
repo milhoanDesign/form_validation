@@ -33,9 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const num1 = parseInt(number1.textContent);
         const num2 = parseInt(number2.textContent);
         const userAnswer = parseInt(answerInput.value);
+        const answerMove = parseInt(answerInput.value);
+    
         if (userAnswer === num1 + num2) {
             result.textContent = 'Correct!';
             result.style.color = 'green';
+            number3.textContent = answerMove; // Send the answer to number3
         } else {
             result.textContent = 'Incorrect, try again.';
             result.style.color = 'red';
@@ -43,10 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function newAnswer(){
-        const userAnswer = parseInt(answerInput.value);
-        number3.textContent = userAnswer; // Send the answer to number3
-        const newNum = parseInt(inputTwo.value); // Change from textContent to value
-        const appendResult = userAnswer + newNum; 
+        const newNum = parseInt(inputTwo.textContent); // Change from textContent to value
+        const number4 = parseInt(number3.textContent);
+        const appendResult = number4 + newNum; 
         newResult.textContent = `New Result: ${appendResult}`; // Append result to newResult
     }
 

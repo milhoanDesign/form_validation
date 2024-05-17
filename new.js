@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function newAnswer(){
-        const newNum = parseInt(inputTwo.textContent); // Change from textContent to value
-        const number4 = parseInt(number3.textContent);
-        const appendResult = number4 + newNum; 
+        const finalNum = parseInt(number3.textContent);
+        const newNum = parseInt(inputTwo.value); // Change from textContent to value
+        const appendResult = finalNum + newNum; 
         newResult.textContent = `New Result: ${appendResult}`; // Append result to newResult
     }
 

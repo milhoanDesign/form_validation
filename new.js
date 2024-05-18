@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newNum = parseInt(inputTwo.value); // Change from textContent to value
         const appendResult = finalNum + newNum; 
         newResult.textContent = `New Result: ${appendResult}`; // Append result to newResult
+        newResult.style.color = 'green';
     }
 
     function resetGame() {
